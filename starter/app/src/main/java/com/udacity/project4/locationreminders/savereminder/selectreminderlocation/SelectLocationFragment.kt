@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import com.udacity.project4.R
-import com.udacity.project4.base.BaseFragment
+import androidx.databinding.base.BaseFragment
 import com.udacity.project4.databinding.FragmentSelectLocationBinding
 import com.udacity.project4.locationreminders.savereminder.SaveReminderViewModel
 import com.udacity.project4.utils.setDisplayHomeAsUpEnabled

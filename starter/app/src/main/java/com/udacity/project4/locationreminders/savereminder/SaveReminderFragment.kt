@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.udacity.project4.R
-import com.udacity.project4.base.BaseFragment
-import com.udacity.project4.base.NavigationCommand
+import androidx.databinding.base.BaseFragment
+import androidx.databinding.base.NavigationCommand
 import com.udacity.project4.databinding.FragmentSaveReminderBinding
 import com.udacity.project4.utils.setDisplayHomeAsUpEnabled
 import org.koin.android.ext.android.inject

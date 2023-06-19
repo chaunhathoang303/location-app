@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import com.udacity.project4.R
-import com.udacity.project4.base.BaseFragment
-import com.udacity.project4.base.NavigationCommand
+import androidx.databinding.base.BaseFragment
+import androidx.databinding.base.NavigationCommand
 import com.udacity.project4.databinding.FragmentRemindersBinding
 import com.udacity.project4.utils.setDisplayHomeAsUpEnabled
 import com.udacity.project4.utils.setTitle
