@@ -2,8 +2,10 @@ package com.udacity.project4.locationreminders.reminderslist
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.databinding.base.BaseViewModel
+import com.udacity.project4.base.BaseViewModel
 import com.udacity.project4.locationreminders.data.ReminderDataSource
 import com.udacity.project4.locationreminders.data.dto.ReminderDTO
 import com.udacity.project4.locationreminders.data.dto.Result
@@ -42,6 +44,7 @@ class RemindersListViewModel(
                     })
                     remindersList.value = dataList
                 }
+
                 is Result.Error ->
                     showSnackBar.value = result.message
             }

@@ -4,7 +4,7 @@ import android.view.View
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
-import androidx.databinding.base.BaseRecyclerViewAdapter
+import com.udacity.project4.base.BaseRecyclerViewAdapter
 
 object BindingAdapters {
 
