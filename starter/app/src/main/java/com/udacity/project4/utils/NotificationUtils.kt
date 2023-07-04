@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Build
 import android.provider.Settings
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.app.NotificationCompat
 import androidx.core.app.TaskStackBuilder
 import androidx.core.content.ContextCompat.startActivity
@@ -53,17 +54,7 @@ fun sendNotification(context: Context, reminderDataItem: ReminderDataItem) {
         .setAutoCancel(true)
         .build()
 
-    val isNotificationGranted = notificationManager.areNotificationsEnabled()
-
-    if (!isNotificationGranted) {
-        Toast.makeText(
-            context,
-            R.string.err_notification,
-            Toast.LENGTH_SHORT
-        ).show()
-    } else {
-        notificationManager.notify(getUniqueId(), notification)
-    }
+    notificationManager.notify(getUniqueId(), notification)
 }
 
 private fun getUniqueId() = ((System.currentTimeMillis() % 10000).toInt())
