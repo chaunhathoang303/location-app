@@ -4,9 +4,13 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.os.Build
+import android.provider.Settings
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.TaskStackBuilder
+import androidx.core.content.ContextCompat.startActivity
 import com.udacity.project4.BuildConfig
 import com.udacity.project4.R
 import com.udacity.project4.locationreminders.ReminderDescriptionActivity
@@ -38,7 +42,7 @@ fun sendNotification(context: Context, reminderDataItem: ReminderDataItem) {
         .addParentStack(ReminderDescriptionActivity::class.java)
         .addNextIntent(intent)
     val notificationPendingIntent = stackBuilder
-        .getPendingIntent(getUniqueId(), PendingIntent.FLAG_UPDATE_CURRENT)
+        .getPendingIntent(getUniqueId(), PendingIntent.FLAG_MUTABLE)
 
 //    build the notification object with the data to be shown
     val notification = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
@@ -49,7 +53,17 @@ fun sendNotification(context: Context, reminderDataItem: ReminderDataItem) {
         .setAutoCancel(true)
         .build()
 
-    notificationManager.notify(getUniqueId(), notification)
+    val isNotificationGranted = notificationManager.areNotificationsEnabled()
+
+    if (!isNotificationGranted) {
+        Toast.makeText(
+            context,
+            R.string.err_notification,
+            Toast.LENGTH_SHORT
+        ).show()
+    } else {
+        notificationManager.notify(getUniqueId(), notification)
+    }
 }
 
 private fun getUniqueId() = ((System.currentTimeMillis() % 10000).toInt())

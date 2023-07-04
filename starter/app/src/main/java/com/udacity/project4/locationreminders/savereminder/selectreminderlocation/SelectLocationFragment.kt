@@ -11,6 +11,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -150,6 +151,12 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
         if (requestCode == REQUEST_LOCATION_PERMISSION) {
             if (grantResults.isNotEmpty() && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 enableMyLocation()
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    R.string.permission_denied_explanation,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
